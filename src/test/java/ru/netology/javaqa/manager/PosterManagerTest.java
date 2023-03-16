@@ -2,7 +2,6 @@ package ru.netology.javaqa.manager;
 
 import org.example.Posters;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class PosterManagerTest {
@@ -25,7 +24,6 @@ public class PosterManagerTest {
         repo.save(movie3);
         repo.save(movie4);
         repo.save(movie5);
-
 
         Posters[] expected = {movie1, movie2, movie3, movie4, movie5};
         Posters[] actual = repo.findAll();
@@ -55,8 +53,16 @@ public class PosterManagerTest {
         Posters[] actual = repo.findAll();
 
         Assertions.assertArrayEquals(expected, actual);
+    }
 
+    @Test
+    public void shouldFindNoMovies() {
+        PosterManager repo = new PosterManager();
 
+        Posters[] expected = {};
+        Posters[] actual = repo.findAll();
+
+        Assertions.assertArrayEquals(expected, actual);
     }
 
     @Test
@@ -100,6 +106,16 @@ public class PosterManagerTest {
         repo.save(movie8);
 
         Posters[] expected = {movie8, movie7, movie6, movie5, movie4, movie3, movie2, movie1};
+        Posters[] actual = repo.findLast();
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldReverseNoPosters() {
+        PosterManager repo = new PosterManager();
+
+        Posters[] expected = {};
         Posters[] actual = repo.findLast();
 
         Assertions.assertArrayEquals(expected, actual);
