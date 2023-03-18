@@ -105,7 +105,7 @@ public class PosterManagerTest {
         repo.save(movie7);
         repo.save(movie8);
 
-        Posters[] expected = {movie8, movie7, movie6, movie5, movie4, movie3, movie2, movie1};
+        Posters[] expected = {movie8, movie7, movie6, movie5, movie4};
         Posters[] actual = repo.findLast();
 
         Assertions.assertArrayEquals(expected, actual);
